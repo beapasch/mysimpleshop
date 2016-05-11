@@ -1,0 +1,112 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:ui="sap.ca.ui" xmlns:shop="nw.epm.refapps.ext.shop.control" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" controllerName="nw.epm.refapps.ext.shop.view.S3_ProductDetails">
+	<Page id="productDetailsPage" title="" showNavButton="true" navButtonPress="onNavBack">
+		<headerContent>
+			<Button id="btnProductHeader" binding="{path:'/ShoppingCarts(-1)', batchGroupId: 'reviews'}" icon="sap-icon://cart" press="onShoppingCartPressed" text="{TotalQuantity}"/>
+		</headerContent>
+		<content>
+			<ObjectHeader id="pd_header" title="{Name}" number="{parts:[{path : 'Price'},{path : 'CurrencyCode'}], formatter:'sap.ca.ui.model.format.AmountFormat.FormatAmountStandard'}" numberUnit="{CurrencyCode}" icon="{ImageUrl}" iconActive="true" iconDensityAware="false" iconPress="onImagePressed" markFavorite="{IsFavoriteOfCurrentUser}" showMarkers="true" backgroundDesign="Translucent">
+				<statuses>
+					<ObjectStatus text="{path: 'StockQuantity', formatter: 'nw.epm.refapps.ext.shop.util.formatter.formatAvailabilityText'}" state="{path: 'StockQuantity', formatter: 'nw.epm.refapps.ext.shop.util.formatter.formatAvailabilityStatus'}"/>
+				</statuses>
+				<attributes>
+					<ObjectAttribute title="{i18n&gt;xfld.maincategory}" text="{MainCategoryName}"/>
+					<ObjectAttribute title="{i18n&gt;xfld.subcategory}" text="{SubCategoryName}"/>
+				</attributes>
+			</ObjectHeader>
+			
+			<!--Extension Point-->
+			<core:ExtensionPoint name="extensionAfterObjectHeader"/>
+
+			<!-- Form for Product Details -->
+			<f:SimpleForm class="nwEpmRefappsShopControlLayout" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" title="{i18n&gt;xtit.productDetails}" labelSpanL="4" labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+				<f:content>
+					<core:Title text="{i18n&gt;xtit.generalInformation}"/>
+					<Label text="{i18n&gt;xfld.productID}"/>
+					<Text id="productId" text="{Id}"/>
+					<Label text="{i18n&gt;xfld.productdescription}"/>
+					<Text text="{Description}"/>
+					<Label text="{i18n&gt;xfld.supplier}"/>
+					<Link text="{SupplierName}" press="onSupplierPressed"/>
+					<Label text="{i18n&gt;xfld.reviews}"/>
+					<shop:RatingAndCount maxRatingValue="5" id="ratingCount" value="{AverageRating}" enabled="true" iconSize="1rem" ratingCount="{RatingCount}" verticalAdjustment="-15" verticalAlignContent="true" press="onRatingPressed"/>
+					<core:Title text="{i18n&gt;xtit.technicalData}"/>
+					<Label text="{i18n&gt;xfld.QuantityUnit}"/>
+					<Text text="{QuantityUnit}"/>
+					<Label text="{i18n&gt;xfld.Dimension}"/>
+					<Text text="{parts:[{path: 'DimensionDepth'}, {path: 'DimensionUnit'}], formatter: 'nw.epm.refapps.ext.shop.util.formatter.formatMeasure' }"/>
+					<Label text="{i18n&gt;xfld.DimensionWidth}"/>
+					<Text text="{parts:[{path: 'DimensionWidth'}, {path: 'DimensionUnit'}], formatter: 'nw.epm.refapps.ext.shop.util.formatter.formatMeasure' }"/>
+					<Label text="{i18n&gt;xfld.DimensionHeight}"/>
+					<Text text="{parts:[{path: 'DimensionHeight'}, {path: 'DimensionUnit'}], formatter: 'nw.epm.refapps.ext.shop.util.formatter.formatMeasure' }"/>
+					<Label text="{i18n&gt;xfld.Weight}"/>
+					<Text text="{parts:[{path: 'WeightMeasure'}, {path: 'WeightUnit'}], formatter: 'nw.epm.refapps.ext.shop.util.formatter.formatMeasure' }"/>
+				</f:content>
+			</f:SimpleForm>
+			
+			<!--Extension Point-->
+			<core:ExtensionPoint name="extensionAfterForm"/>
+
+			<!--Review Table -->
+			<Table id="reviewTable" class="nwEpmRefappsShopControlLayout" growing="true" growingScrollToLoad="true" noDataText="{i18n&gt;xfld.noDataReviews}">
+				<headerToolbar>
+					<Toolbar>
+						<Label text="{i18n&gt;xtit.reviews}" class="sapMH4FontSize"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://sort" press="onTableSettingsPressed"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<!-- Rating Indicator -->
+					<Column width="6rem" minScreenWidth="Tablet" demandPopin="true" hAlign="Left" vAlign="Top">
+						<header>
+							<Label text="{/#Review/Rating/@sap:label}"/>
+						</header>
+					</Column>
+					<!-- Name and Date -->
+					<Column width="20%" minScreenWidth="Tablet" demandPopin="true" hAlign="Left" vAlign="Top"/>
+					<!-- Comment -->
+					<Column width="55%" minScreenWidth="Tablet" demandPopin="true" hAlign="Left" vAlign="Top">
+						<header>
+							<Label text="{i18n&gt;xfld.review}"/>
+						</header>
+					</Column>
+					<!-- Links for Helpful, Edit and Delete -->
+					<Column width="12rem" minScreenWidth="Tablet" demandPopin="true" hAlign="Left" vAlign="Top"/>
+				</columns>
+				<ColumnListItem id="reviewListItem">
+					<cells>
+						<!-- Rating Indicator -->
+						<RatingIndicator enabled="false" maxValue="5" value="{Rating}" iconSize="0.875rem" class="sapMTableContentMargin"/>
+						<!-- Name and Date -->
+						<ObjectIdentifier class="sapMTableContentMargin" title="{parts:[{path: 'IsReviewOfCurrentUser'}, {path: 'UserDisplayName'}], formatter: 'nw.epm.refapps.ext.shop.util.formatter.formatMyReview' }" text="{path:'ChangedAt', type:'sap.ca.ui.model.type.Date', formatOptions: { style: 'medium'} }"/>
+						<!-- Comment -->
+						<Text text="{Comment}" class="sapMTableContentMargin"/>
+						<!-- Links for Helpful, Edit and Delete -->
+						<l:VerticalLayout>
+							<Text class="sapMTableContentMargin" text="{path: 'HelpfulCount', formatter: 'nw.epm.refapps.ext.shop.util.formatter.formatHelpfulCount'}"/>
+							<l:HorizontalLayout>
+								<!-- Rate as Helpful -->
+								<Link text="{i18n&gt;xlnk.rateAsHelpful}" class="nwEpmRefappsShopReviewMargin" press="onRateAsHelpfulPressed" enabled="{path: 'HelpfulForCurrentUser', formatter: 'nw.epm.refapps.ext.shop.util.formatter.negateBoolean'}" visible="{path: 'IsReviewOfCurrentUser', formatter: 'nw.epm.refapps.ext.shop.util.formatter.negateBoolean' }"/>
+								<!-- Edit -->
+								<Link text="{i18n&gt;xlnk.editReview}" visible="{IsReviewOfCurrentUser}" class="nwEpmRefappsShopReviewMargin" press="onEditReviewLinkPressed"/>
+								<!-- Delete -->
+								<Link text="{i18n&gt;xlnk.deleteReview}" visible="{IsReviewOfCurrentUser}" class="nwEpmRefappsShopReviewMargin" press="onDeleteReviewLinkPressed"/>
+							</l:HorizontalLayout>
+						</l:VerticalLayout>
+					</cells>
+				</ColumnListItem>
+			</Table>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="btnAddToCart" text="{i18n&gt;xbut.addToCart}" press="onAddToCartPressed" type="Emphasized"/>
+					<Button id="btnReview" text="{i18n&gt;xbut.writeReview}" press="onEditReviewPressed" class="sapUiHideOnPhone"/>
+					<Button id="btnFavorite" icon="sap-icon://favorite" press="onToggleFavoritePressed" class="sapUiHideOnPhone"/>	
+					<Button icon="sap-icon://overflow" press="onOverflowPressed" class="sapUiVisibleOnlyOnPhone"/>				
+					<Button icon="sap-icon://action" press="onSharePressed"/>
+				</contentRight>
+			</Bar>
+		</footer>		
+	</Page>
+</core:View>

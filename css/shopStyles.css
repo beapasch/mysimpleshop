@@ -1,0 +1,76 @@
+.nwEpmRefappsShopReviewMargin {
+	margin-right: 2rem;
+}
+
+.nwEpmRefappsShopControlLayout {
+	padding: 1rem 2rem 0 2rem;
+}
+
+.sap-tablet .nwEpmRefappsShopControlLayout {
+	padding: 1rem 1rem 0 1rem;
+}
+
+.sap-phone .nwEpmRefappsShopControlLayout {
+	padding: 0 0 0 0;
+}
+
+.sap-phone .nwEpmRefappsShopControlLayoutSpacer {
+	margin-bottom: 1rem;
+}
+
+.nwEpmRefappsShopTableItemLayout {
+	min-height: 5rem;
+	padding: 1rem 0 1rem 0;
+}
+
+.nwEpmRefappsShopImageLayout {
+	width: 3rem;
+	height: 3rem;
+	padding: 1rem 0 1rem 0;
+}
+
+.nwEpmRefappsShopImageSize {
+	width: 25rem;
+}
+
+.sap-phone .nwEpmRefappsShopImageSize {
+	width: 15rem;
+}
+
+.nwEpmRefappsShopReviewDialog {
+	margin-top: 2rem;
+}
+
+.sap-phone .nwEpmRefappsShopReviewDialog {
+	margin-top: 1rem;
+}
+
+.nwEpmRefappsLibraryRatingAndCountVAlign{
+	vertical-align: middle;
+}
+
+.nwEpmRefappsShopTextcontainer{
+  position: absolute;
+  left: 34%;
+  right: 25%;
+  top: 38%;
+  margin:auto;
+  overflow:visible;
+}
+
+.sap-phone .nwEpmRefappsShopTextcontainer{
+  left: 18%;
+  right: 18%;
+}
+
+.nwEpmRefappsShopTextcontainer > .sapMFlexItem{
+  display:block;
+  width:auto;
+  margin:auto;
+}
+
+.nwEpmRefappsShopTextclass{
+  text-align:center!important;
+  font-size:1.5rem;
+  color: @sapUiLightText;
+}

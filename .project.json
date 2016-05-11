@@ -1,0 +1,27 @@
+{
+  "mockpreview": {
+    "mockUri": "/sap/opu/odata/sap/EPM_REF_APPS_SHOP_SRV/",
+    "loadCustomRequests": true,
+    "loadJSONFiles": true,
+    "metadataFilePath": "model/metadata.xml",
+    "mockRequestsFilePath": ""
+  },
+  "generation": [
+    {
+      "templateId": "fiorireferenceapps.shop",
+      "templateVersion": "1.0.1",
+      "dateTimeStamp": "Thu, 17 Sep 2015 12:34:38 GMT"
+    }
+  ],
+  "translation": {
+    "supportedLanguages": "de,en,es,ja",
+    "defaultLanguage": "en",
+    "defaultI18NPropertyFile": "",
+    "resourceModelName": ""
+  },
+  "hcpdeploy": {
+    "account": "d022911trial",
+    "name": "mysimpleshop",
+    "lastVersionWeTriedToDeploy": "1.0.0"
+  }
+}

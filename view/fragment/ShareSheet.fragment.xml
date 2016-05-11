@@ -1,0 +1,12 @@
+<core:FragmentDefinition
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  xmlns:footerbar="sap.ushell.ui.footerbar" >
+  <ActionSheet
+    showCancelButton="true"
+    placement="Top">
+    <buttons>
+      <footerbar:AddBookmarkButton id="btnAddBookmark"/>
+    </buttons>
+  </ActionSheet>
+</core:FragmentDefinition>

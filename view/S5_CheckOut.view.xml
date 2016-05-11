@@ -1,0 +1,83 @@
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" controllerName="nw.epm.refapps.ext.shop.view.S5_CheckOut"> 	
+	<Page showNavButton="true" navButtonPress="onNavBack" title="{i18n&gt;xtit.checkout}">
+		<headerContent>
+			<Button id="btnCheckOutHeader" binding="{path: '/ShoppingCarts(-1)', batchGroupId : 'checkOut'}" icon="sap-icon://cart" press="onShoppingCartPressed" text="{TotalQuantity}"/>
+		</headerContent>
+		<content>
+			<f:SimpleForm class="nwEpmRefappsShopControlLayout" minWidth="1024" maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1" title="{i18n&gt;xtit.information}">
+				<f:content>
+					<Label text="{i18n&gt;xfld.CustomerName}"/>
+					<Text text="{/ShoppingCarts(-1)/FormattedCustomerName}"/>
+					<Label text="{i18n&gt;xfld.CustomerAdress}"/>
+					<Text text="{/ShoppingCarts(-1)/FormattedAddress}"/>
+				</f:content>
+			</f:SimpleForm>
+
+			<Table id="checkOutTable" class="nwEpmRefappsShopControlLayout" items="{path: '/ShoppingCarts(-1)/ShoppingCartItems',          sorter: {path: 'Id',             descending: false},          parameters: {countMode: 'Inline', expand: 'Product',              select: 'Id,Quantity,SubTotal,CurrencyCode,Product/ImageUrl,Product/Name,Product/StockQuantity,Product/Description'}}" growing="true" growingScrollToLoad="true">
+				<headerToolbar>
+					<Toolbar>
+						<Label text="{i18n&gt;xtit.checkOutTable}" class="sapMH4FontSize"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<!-- Image -->
+					<Column width="16%" minScreenWidth="Tablet" hAlign="Left">
+						<header>
+							<Label text="{i18n&gt;xfld.items}"/>
+						</header>
+					</Column>
+					<!-- Name + Availability -->
+					<Column width="27%" hAlign="Left">
+						<header>
+							<Label text="{i18n&gt;xfld.productname}"/>
+						</header>
+					</Column>
+					<!-- Description -->
+					<Column width="19%" minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+						<header>
+							<Label text="{i18n&gt;xfld.productdescription}"/>
+						</header>
+					</Column>
+					<!-- Quantity -->
+					<Column width="19%" minScreenWidth="Tablet" demandPopin="true" hAlign="Right">
+						<header>
+							<Label text="{i18n&gt;xfld.quantity}"/>
+						</header>
+					</Column>
+					<!-- Subtotal & Total footer -->
+					<Column width="19%" hAlign="Right">
+						<header>
+							<Label text="{i18n&gt;xfld.subtotal}"/>
+						</header>
+						<footer>
+							<ObjectNumber number="{parts: [{path: '/ShoppingCarts(-1)/Total'},{path: '/ShoppingCarts(-1)/CurrencyCode'}], formatter: 'sap.ca.ui.model.format.AmountFormat.FormatAmountStandard'}" unit="{/ShoppingCarts(-1)/CurrencyCode}"/>
+						</footer>
+					</Column>
+				</columns>
+
+				<ColumnListItem>
+					<cells>
+						<!-- Image -->
+						<Image src="{Product/ImageUrl}" class="nwEpmRefappsShopImageLayout" densityAware="false"/>
+						<!-- Name + Availability -->
+						<ObjectIdentifier title="{Product/Name}" text="{path: 'Product/StockQuantity', formatter: 'nw.epm.refapps.ext.shop.util.formatter.formatAvailabilityText'}"/>
+						<!-- Description -->
+						<Text text="{Product/Description}" maxLines="2"/>
+						<!-- Quantity -->
+						<Text text="{Quantity}" width="5rem"/>
+						<!-- Subtotal -->
+						<ObjectNumber number="{parts: [{path: 'SubTotal'},{path: 'CurrencyCode'}], formatter: 'sap.ca.ui.model.format.AmountFormat.FormatAmountStandard'}" unit="{CurrencyCode}"/>
+					</cells>
+				</ColumnListItem>
+			</Table>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button id="btnBuyNow" text="{i18n&gt;xbut.buyNow}" press="onBuyNowPressed" type="Emphasized"/>					
+					<Button icon="sap-icon://action" press="onSharePressed"/>
+				</contentRight>
+			</Bar>
+		</footer>		
+	</Page>
+</core:View>

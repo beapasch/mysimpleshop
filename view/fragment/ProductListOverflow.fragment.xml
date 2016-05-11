@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<ActionSheet showCancelButton="true" placement="Auto">
+		<buttons>
+			<Button
+				icon="sap-icon://sort"
+				text= "{i18n>xbut.sort}"
+				press="onSortPressed"
+				class="sapUiVisibleOnlyOnPhone">
+			</Button>
+			<Button
+				icon= "sap-icon://group-2"
+				text= "{i18n>xbut.group}"
+				press="onGroupPressed"
+				class="sapUiVisibleOnlyOnPhone">
+			</Button>
+			<Button
+				text= "{i18n>xbut.personalization}"
+				icon="sap-icon://action-settings"
+				press="onPersonalizationPressed"
+				class="sapUiVisibleOnlyOnPhone">
+			</Button>
+		</buttons>
+	</ActionSheet>
+</core:FragmentDefinition>

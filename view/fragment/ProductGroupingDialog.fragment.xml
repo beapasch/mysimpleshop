@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog confirm="onGroupingDialogConfirmed">
+		<groupItems>
+			<ViewSettingsItem text="{/#Product/MainCategoryName/@sap:label}"
+				key="MainCategoryName" />
+			<ViewSettingsItem text="{/#Product/SubCategoryName/@sap:label}"
+				key="SubCategoryName" />
+			<ViewSettingsItem text="{/#Product/StockQuantity/@sap:label}"
+				key="StockQuantity" />
+			<ViewSettingsItem text="{/#Product/Price/@sap:label}"
+				key="Price" />
+			<ViewSettingsItem text="{/#Product/AverageRating/@sap:label}"
+				key="AverageRating" />
+			<ViewSettingsItem text="{/#Product/SupplierName/@sap:label}"
+				key="SupplierName" />
+		</groupItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>
