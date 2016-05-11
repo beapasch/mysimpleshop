@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:shop="nw.epm.refapps.ext.shop.control">
+	<Popover showHeader="false">
+		<content>
+			<l:VerticalLayout id="reviewRatingList">
+				<shop:RatingAndCount maxRatingValue="5" value="{Rating}"
+					enabled="false" iconSize="1rem" ratingCount="{RatingCount}"
+					verticalAlignContent="true" />
+			</l:VerticalLayout>
+		</content>
+	</Popover>
+</core:FragmentDefinition>

@@ -1,0 +1,10 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="nw.epm.refapps.ext.shop.view.EmptyPage">
+	<Page enableScrolling="false" class="sapUiFioriObjectPage" showNavButton="true" navButtonPress="onBackPressed">
+		<content>
+			<VBox class="nwEpmRefappsShopTextcontainer">
+					<Text text="{i18n>ymsg.pageNotFoundTitle}" class="nwEpmRefappsShopTextclass" />
+					<Text text="{i18n>ymsg.pageNotFoundIntro}" class="nwEpmRefappsShopTextclass" />
+			</VBox>
+		</content>
+	</Page>
+</mvc:View>
