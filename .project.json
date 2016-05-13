@@ -14,11 +14,10 @@
     }
   ],
   "translation": {
-    "supportedLanguages": "de,en,es,fr,ja",
+    "supportedLanguages": "de,en,es,fr,it,ja",
     "defaultLanguage": "en",
     "defaultI18NPropertyFile": "",
     "resourceModelName": "",
-    "translationDomain": "BC",
     "translationHubProjectId": 793
   },
   "hcpdeploy": {
