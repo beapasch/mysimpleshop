@@ -18,10 +18,5 @@
     "defaultLanguage": "en",
     "defaultI18NPropertyFile": "i18n.properties",
     "translationDomain": "BC"
-  },
-  "hcpdeploy": {
-    "account": "d022911trial",
-    "name": "mysimpleshop",
-    "lastVersionWeTriedToDeploy": "1.0.0"
   }
 }
