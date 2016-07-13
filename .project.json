@@ -16,9 +16,8 @@
   "translation": {
     "supportedLanguages": "de,en,es,fr,it,ja",
     "defaultLanguage": "en",
-    "defaultI18NPropertyFile": "",
-    "resourceModelName": "",
-    "translationHubProjectId": 793
+    "defaultI18NPropertyFile": "i18n.properties",
+    "translationDomain": "BC"
   },
   "hcpdeploy": {
     "account": "d022911trial",
